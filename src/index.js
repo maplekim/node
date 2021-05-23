@@ -1,12 +1,14 @@
 const Koa = require('koa');
 const Router = require('koa-router');
 const serve = require('koa-static');
+const passport = require('passport');
 
 const app = new Koa();
 const router = new Router();
 app.use(serve(__dirname + '/static'));
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(passport.initialize());
 
 router.get('/', (ctx) => {
     ctx.body = '홈';
